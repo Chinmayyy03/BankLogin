@@ -190,7 +190,7 @@
 <body>
 <div class="login-container">
     <div class="bank-brand">
-        <img src="bank-logo.png" alt="Bank Logo" class="bank-logo">
+        <img src="idsspl_logo.gif" alt="Bank Logo" class="bank-logo">
         <div class="brand-title">MERCHANTS LIBERAL CO-OP BANK LTD, GADAG</div>
         <div class="brand-sub">Core Banking System - Secure Access</div>
     </div>
