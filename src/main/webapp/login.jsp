@@ -105,7 +105,7 @@
 
         <div class="help-row">
             <a href="#">Forgot Password?</a>
-            <a href="#">Need Help?</a>
+            <a href="signin.jsp">sign in ?</a>
         </div>
     </form>
 
