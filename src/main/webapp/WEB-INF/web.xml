@@ -6,13 +6,14 @@
          version="3.1">
 <servlet>
     <servlet-name>SignInServlet</servlet-name>
-    <servlet-class>com.bankapp.servlets.SignInServlet</servlet-class>
+    <servlet-class>servlet.SignInServlet</servlet-class>
 </servlet>
 
 <servlet-mapping>
     <servlet-name>SignInServlet</servlet-name>
     <url-pattern>/SignInServlet</url-pattern>
 </servlet-mapping>
+
 
     <!-- Application Name -->
     <display-name>Bank CBS Login System</display-name>
