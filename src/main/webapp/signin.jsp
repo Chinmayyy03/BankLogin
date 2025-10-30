@@ -17,19 +17,21 @@
     </div>
 
     <form action="SignInServlet" method="post" autocomplete="off">
-        <label for="branch">Branch Code</label>
-        <select id="branch" name="branch" class="form-control" required>
-            <option value="">-- Select Branch --</option>
-            <option value="101">101 - Main Branch</option>
-            <option value="102">102 - Gadag</option>
-            <option value="103">103 - Hubli</option>
-        </select>
-
+        
+        <label for="branch_code">Branch Code</label>
+        <input type="text" id="branch_code" name="branch_code" class="form-control" required>
+        
+        <label for="branch_name">Branch Name</label>
+        <input type="text" id="branch_name" name="branch_name" class="form-control" required>
+        
         <label for="username">User ID</label>
         <input type="text" id="username" name="username" class="form-control" required>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" required>
+        
+        <label for="confirm_password">Confirm Password</label>
+        <input type="confirm_password" id="confirm_password" name="confirm_password" class="form-control" required>
 
         <button type="submit" class="btn-login">Sign In</button>
 
