@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
+    // Disable caching
     response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
     response.setHeader("Pragma","no-cache");
     response.setDateHeader("Expires", 0);
@@ -19,9 +20,10 @@
         try {
             conn = DBConnection.getConnection();
 
-            String sql = "SELECT NAME, IS_ACCOUNT_ACTIVE, STATUS " +
-                         "FROM ACL.USERREGISTER " +
-                         "WHERE USER_ID=? AND PASSWORD=? AND BRANCH_CODE=?";
+            // ✅ Updated query: use BRANCH_LOGIN (no active/status columns)
+            String sql = "SELECT NAME " +
+                         "FROM BRANCH_LOGIN " +
+                         "WHERE USER_ID = ? AND PASSWORD = ? AND BRANCH_CODE = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userId);
             pstmt.setString(2, password);
@@ -30,20 +32,15 @@
 
             if (rs.next()) {
                 String name = rs.getString("NAME");
-                String active = rs.getString("IS_ACCOUNT_ACTIVE");
-                String status = rs.getString("STATUS");
 
-                if ("Y".equalsIgnoreCase(active) && "A".equalsIgnoreCase(status)) {
-                    session.setAttribute("userId", userId);
-                    session.setAttribute("branch", branchCode);
-                    session.setAttribute("userName", name);
-                    response.sendRedirect("dashboard.jsp");
-                    showForm = false;
-                } else {
-                    out.println("<script>alert('User account inactive or not authorized');</script>");
-                }
+                // ✅ Successful login
+                session.setAttribute("userId", userId);
+                session.setAttribute("branch", branchCode);
+                session.setAttribute("userName", name);
+                response.sendRedirect("dashboard.jsp");
+                showForm = false;
             } else {
-                out.println("<script>alert('Invalid User ID or Password');</script>");
+                out.println("<script>alert('Invalid User ID, Password, or Branch Code');</script>");
             }
         } catch (Exception e) {
             out.println("<script>alert('Database Error: " + e.getMessage() + "');</script>");
@@ -80,7 +77,7 @@
             <%
                 try (Connection conn = DBConnection.getConnection();
                      Statement stmt = conn.createStatement();
-                     ResultSet branchRS = stmt.executeQuery("SELECT BRANCH_CODE, NAME FROM HEADOFFICE.BRANCH ORDER BY BRANCH_CODE")) {
+                     ResultSet branchRS = stmt.executeQuery("SELECT BRANCH_CODE, NAME FROM BRANCHES ORDER BY BRANCH_CODE")) {
 
                     while(branchRS.next()) {
                         String bCode = branchRS.getString("BRANCH_CODE");
@@ -105,7 +102,7 @@
 
         <div class="help-row">
             <a href="#">Forgot Password?</a>
-            <a href="signin.jsp">sign in ?</a>
+            <a href="signin.jsp">Sign in ?</a>
         </div>
     </form>
 
