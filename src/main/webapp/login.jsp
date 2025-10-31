@@ -67,7 +67,7 @@
     </div>
 
     <form action="login.jsp" method="post" autocomplete="off">
-        <label for="branch">Branch Code</label>
+        
         <select id="branch" name="branch" class="form-control" required>
             <option value="">-- Select Branch --</option>
             <%
@@ -88,17 +88,16 @@
             %>
         </select>
 
-        <label for="username">User ID</label>
-        <input type="text" id="username" name="username" class="form-control" required>
+        
+        <input type="text" placeholder="Enter User ID" id="username" name="username" class="form-control" required>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" required>
+        
+        <input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
 
         <button type="submit" class="btn-login">Login</button>
 
         <div class="help-row">
             <a href="#">Forgot Password?</a>
-            <a href="signin.jsp">Sign in ?</a>
         </div>
     </form>
 
