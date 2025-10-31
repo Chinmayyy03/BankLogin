@@ -66,8 +66,20 @@
         <div class="brand-sub">Core Banking System - Secure Access</div>
     </div>
 
-    <form action="login.jsp" method="post" autocomplete="off">
-        
+   <form action="login.jsp" method="post" autocomplete="off"
+      style="max-width:950px; background:transprent; border-radius:10px; 
+             box-shadow:0 0 20px rgba(255,255,255,0.15); display:flex; align-items:center; 
+             justify-content:center; gap:40px; padding:35px; flex-wrap:wrap;">
+
+    <!-- 🖼 Left side: Larger IDSSPL image -->
+    <div style="flex:1.4; display:flex; justify-content:center; align-items:center;">
+        <img src="dynamic-cbs1.jpg" alt="IDSSPL Logo"
+             style="width:100%; max-width:500px; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.3);">
+    </div>
+
+    <!-- 💻 Right side: Login form -->
+    <div style="flex:1; min-width:280px;">
+
         <select id="branch" name="branch" class="form-control" required>
             <option value="">-- Select Branch --</option>
             <%
@@ -100,11 +112,11 @@
             <a href="#">Forgot Password?</a>
         </div>
     </form>
-
+</div>
     <div class="login-footer">
         © 2025 Merchants Liberal Co-op Bank Ltd. All rights reserved.
     </div>
-</div>
+
 </body>
 </html>
 <% } %>

@@ -2,8 +2,7 @@ html, body {
         height: 100%;
         margin: 0;
         font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        background: linear-gradient(rgba(10,40,80,0.75), rgba(0,0,0,0.75)),
-                    url('assets/bg-bank.jpg') no-repeat center center fixed;
+        background: linear-gradient(to bottom,#622984,#f53460);
         background-size: cover;
     }
 
@@ -26,8 +25,10 @@ html, body {
 
 
    .bank-brand {
+    color: #ffffff;
     margin-bottom: 40px;
     text-align: center;
+    
 }
 
 .bank-logo {
@@ -48,7 +49,7 @@ html, body {
 }
 
     .brand-title { font-size: 28px; font-weight: 700; margin-bottom: 5px; }
-    .brand-sub { font-size: 16px; color: #dbe2ec; margin-bottom: 30px; }
+    .brand-sub { font-size: 16px;  margin-bottom: 30px; }
 
     form {
         width: 100%;
@@ -68,6 +69,10 @@ html, body {
         height: 45px;
         margin-bottom: 15px;
     }
+    .form-control::placeholder {
+    color: white;  /* light blue or any color you like */
+    opacity: 1;      /* ensure it's fully visible */
+	}
     .form-control:focus {
         background: rgba(255,255,255,0.3);
         box-shadow: 0 0 8px #2196F3;
