@@ -19,9 +19,7 @@
 
         try {
             conn = DBConnection.getConnection();
-
-            // ✅ Query matches your BRANCH_LOGIN table structure
-            String sql = "SELECT USER_ID FROM BRANCH_LOGIN WHERE USER_ID = ? AND PASSWORD = ? AND BRANCH_CODE = ?";
+            String sql = "SELECT USER_ID FROM BRANCH_LOGIN WHERE USER_ID=? AND PASSWORD=? AND BRANCH_CODE=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userId);
             pstmt.setString(2, password);
@@ -29,13 +27,11 @@
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // ✅ Successful login
                 session.setAttribute("userId", userId);
                 session.setAttribute("branchCode", branchCode);
                 response.sendRedirect("dashbord.jsp");
                 showForm = false;
             } else {
-                // ❌ Invalid credentials
                 out.println("<script>alert('Invalid User ID, Password, or Branch Code');</script>");
             }
         } catch (Exception e) {
@@ -59,64 +55,65 @@
 <link rel="stylesheet" href="css/LoginStyle.css">
 </head>
 <body>
+
 <div class="login-container">
+
+    <!-- 🔹 Logo and Titles -->
     <div class="bank-brand">
         <img src="idsspl_logo.gif" alt="Bank Logo" class="bank-logo">
         <div class="brand-title">MERCHANTS LIBERAL CO-OP BANK LTD, GADAG</div>
         <div class="brand-sub">Core Banking System - Secure Access</div>
     </div>
 
-   <form action="login.jsp" method="post" autocomplete="off"
-      style="max-width:950px; background:transprent; border-radius:10px; 
-             box-shadow:0 0 20px rgba(255,255,255,0.15); display:flex; align-items:center; 
-             justify-content:center; gap:40px; padding:35px; flex-wrap:wrap;">
+    <!-- 🔹 Main form layout (Image + Form) -->
+    <form action="login.jsp" method="post" autocomplete="off">
 
-    <!-- 🖼 Left side: Larger IDSSPL image -->
-    <div style="flex:1.4; display:flex; justify-content:center; align-items:center;">
-        <img src="dynamic-cbs1.jpg" alt="IDSSPL Logo"
-             style="width:100%; max-width:500px; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.3);">
-    </div>
+        <!-- Left Side: Image -->
+        <div style="flex:1.4; display:flex; justify-content:center; align-items:center;">
+            <img src="dynamic-cbs1.jpg" alt="Bank System Illustration">
+        </div>
 
-    <!-- 💻 Right side: Login form -->
-    <div style="flex:1; min-width:280px;">
+        <!-- Right Side: Form Fields -->
+        <div style="flex:1; min-width:280px; text-align:left;">
 
-        <select id="branch" name="branch" class="form-control" required>
-            <option value="">-- Select Branch --</option>
-            <%
-                try (Connection conn = DBConnection.getConnection();
-                     Statement stmt = conn.createStatement();
-                     ResultSet branchRS = stmt.executeQuery("SELECT BRANCH_CODE, NAME FROM BRANCHES ORDER BY BRANCH_CODE")) {
+            <select id="branch" name="branch" class="form-control" required>
+                <option value="">-- Select Branch --</option>
+                <%
+                    try (Connection conn = DBConnection.getConnection();
+                         Statement stmt = conn.createStatement();
+                         ResultSet branchRS = stmt.executeQuery("SELECT BRANCH_CODE, NAME FROM BRANCHES ORDER BY BRANCH_CODE")) {
 
-                    while(branchRS.next()) {
-                        String bCode = branchRS.getString("BRANCH_CODE");
-                        String bName = branchRS.getString("NAME");
-            %>
-                        <option value="<%=bCode%>"><%=bCode%> - <%=bName%></option>
-            <%
+                        while(branchRS.next()) {
+                            String bCode = branchRS.getString("BRANCH_CODE");
+                            String bName = branchRS.getString("NAME");
+                %>
+                            <option value="<%=bCode%>"><%=bCode%> - <%=bName%></option>
+                <%
+                        }
+                    } catch(Exception ex) {
+                        out.println("<option>Error loading branches</option>");
                     }
-                } catch(Exception ex) {
-                    out.println("<option>Error loading branches</option>");
-                }
-            %>
-        </select>
+                %>
+            </select>
 
-        
-        <input type="text" placeholder="Enter User ID" id="username" name="username" class="form-control" required>
+            <input type="text" placeholder="Enter User ID" id="username" name="username" class="form-control" required>
+            <input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
 
-        
-        <input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
+            <button type="submit" class="btn-login">Login</button>
 
-        <button type="submit" class="btn-login">Login</button>
+            <div class="help-row">
+                <a href="#">Forgot Password?</a>
+            </div>
 
-        <div class="help-row">
-            <a href="#">Forgot Password?</a>
         </div>
     </form>
-</div>
+
+    <!-- Footer -->
     <div class="login-footer">
         © 2025 Merchants Liberal Co-op Bank Ltd. All rights reserved.
     </div>
 
+</div>
 </body>
 </html>
 <% } %>
