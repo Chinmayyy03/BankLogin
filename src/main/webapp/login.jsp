@@ -69,7 +69,7 @@
 
     <!-- 🔹 Logo and Titles -->
     <div class="bank-brand">
-        <img src="idsspl_logo.gif" alt="Bank Logo" class="bank-logo">
+        <img src="images/idsspl_logo.gif" alt="Bank Logo" class="bank-logo">
         <div class="brand-title">MERCHANTS LIBERAL CO-OP BANK LTD, GADAG</div>
         <div class="brand-sub">Core Banking System - Secure Access</div>
     </div>
@@ -80,7 +80,7 @@
         <!-- Left Side: Image -->
         <div style="flex:1.4; display:flex; justify-content:center; align-items:center;">
 
-            <img src="image.gif" alt="Bank System Illustration">
+            <img src="images/image.gif" alt="Bank System Illustration">
         </div>
 
         <!-- Right Side: Form Fields -->
@@ -110,7 +110,7 @@
             
             <div class="password-container">
     			<input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
-    				<img src="eye.png" id="eyeIcon" class="eye-icon" alt="Show" onclick="togglePassword()">
+    				<img src="images/eye.png" id="eyeIcon" class="eye-icon" alt="Show" onclick="togglePassword()">
 			</div>
 
 
@@ -147,10 +147,10 @@ eyeIcon.style.display = "none";
 function togglePassword() {
     if (password.type === "password") {
         password.type = "text";
-        eyeIcon.src = "eye-hide.png"; // 👁 closed-eye image
+        eyeIcon.src = "images/eye-hide.png"; // 👁 closed-eye image
     } else {
         password.type = "password";
-        eyeIcon.src = "eye.png"; // 👁 open-eye image
+        eyeIcon.src = "images/eye.png"; // 👁 open-eye image
     }
 }
 

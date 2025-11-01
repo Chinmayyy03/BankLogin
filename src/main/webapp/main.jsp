@@ -45,6 +45,7 @@
     <ul class="menu">
         <li onclick="loadPage('dashboard.jsp', 'Dashboard')" class="active">🏠 Dashboard</li>
         <li onclick="loadPage('customers.jsp', 'Customers')">👥 Customers</li>
+        
     </ul>
 
     <div class="logout">
