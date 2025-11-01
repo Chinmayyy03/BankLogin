@@ -137,10 +137,14 @@
 
 <!-- script code for eye icon in password field -->
 <script>
-function togglePassword() {
-    const password = document.getElementById("password");
-    const eyeIcon = document.getElementById("eyeIcon");
+const password = document.getElementById("password");
+const eyeIcon = document.getElementById("eyeIcon");
 
+// Hide icon initially
+eyeIcon.style.display = "none";
+
+// Show/Hide password on click
+function togglePassword() {
     if (password.type === "password") {
         password.type = "text";
         eyeIcon.src = "eye-hide.png"; // 👁 closed-eye image
@@ -149,6 +153,15 @@ function togglePassword() {
         eyeIcon.src = "eye.png"; // 👁 open-eye image
     }
 }
+
+// Detect typing and show/hide icon
+password.addEventListener("input", function () {
+    if (password.value.length > 0) {
+        eyeIcon.style.display = "block";
+    } else {
+        eyeIcon.style.display = "none";
+    }
+});
 </script>
 
 </body>
