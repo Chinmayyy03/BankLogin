@@ -70,7 +70,7 @@
 
         <!-- Left Side: Image -->
         <div style="flex:1.4; display:flex; justify-content:center; align-items:center;">
-            <img src="dynamic-cbs1.jpg" alt="Bank System Illustration">
+            <img src="image.gif" alt="Bank System Illustration" >
         </div>
 
         <!-- Right Side: Form Fields -->
