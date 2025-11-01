@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*, db.DBConnection" %>
+<%@ page import="java.sql.*, db.DBConnection" %> 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -10,6 +10,7 @@
     String userId = request.getParameter("username");
     String password = request.getParameter("password");
     String branchCode = request.getParameter("branch");
+    String errorMessage = null;
     boolean showForm = true;
 
     if (userId != null && password != null && branchCode != null) {
@@ -32,10 +33,10 @@
                 response.sendRedirect("dashbord.jsp");
                 showForm = false;
             } else {
-                out.println("<script>alert('Invalid User ID, Password, or Branch Code');</script>");
+                errorMessage = "Invalid username or password";
             }
         } catch (Exception e) {
-            out.println("<script>alert('Database Error: " + e.getMessage() + "');</script>");
+            errorMessage = "Database Error: " + e.getMessage();
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception ignored) {}
             try { if (pstmt != null) pstmt.close(); } catch (Exception ignored) {}
@@ -53,6 +54,14 @@
 <title>Bank CBS - Secure Login</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/LoginStyle.css">
+<style>
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+</style>
 </head>
 <body>
 
@@ -70,7 +79,7 @@
 
         <!-- Left Side: Image -->
         <div style="flex:1.4; display:flex; justify-content:center; align-items:center;">
-            <img src="image.gif" alt="Bank System Illustration" >
+            <img src="image.gif" alt="Bank System Illustration">
         </div>
 
         <!-- Right Side: Form Fields -->
@@ -100,6 +109,10 @@
             <input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
 
             <button type="submit" class="btn-login">Login</button>
+
+            <% if (errorMessage != null) { %>
+                <div class="error-message"><%= errorMessage %></div>
+            <% } %>
 
             <div class="help-row">
                 <a href="#">Forgot Password?</a>
