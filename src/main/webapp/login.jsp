@@ -107,7 +107,12 @@
             </select>
 
             <input type="text" placeholder="Enter User ID" id="username" name="username" class="form-control" required>
-            <input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
+            
+            <div class="password-container">
+    			<input type="password" placeholder="Enter Password" id="password" name="password" class="form-control" required>
+    				<img src="eye.png" id="eyeIcon" class="eye-icon" alt="Show" onclick="togglePassword()">
+			</div>
+
 
             <button type="submit" class="btn-login">Login</button>
 
@@ -128,6 +133,24 @@
     </div>
 
 </div>
+
+
+<!-- script code for eye icon in password field -->
+<script>
+function togglePassword() {
+    const password = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (password.type === "password") {
+        password.type = "text";
+        eyeIcon.src = "eye-hide.png"; // 👁 closed-eye image
+    } else {
+        password.type = "password";
+        eyeIcon.src = "eye.png"; // 👁 open-eye image
+    }
+}
+</script>
+
 </body>
 </html>
 <% } %> 

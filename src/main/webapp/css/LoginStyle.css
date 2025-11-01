@@ -94,6 +94,31 @@ label {
     text-align: left;
 }
 
+/* === Show/Hide Password Icon === */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container .form-control {
+    padding-right: 40px; /* space for the eye icon */
+}
+
+.eye-icon {
+    position: absolute;
+    top: 30%;
+    right: 12px;
+    /* transform: translateY(-50%);*/
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+}
+
 .form-control {
     background: rgba(255,255,255,0.25);
     border: none;
@@ -191,3 +216,17 @@ select.form-control option {
         font-size: 22px;
     }
 }
+
+
+
+/* Fix double-eye issue (disable Bootstrap background icon) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-password-toggle-button {
+    display: none !important;
+}
+
