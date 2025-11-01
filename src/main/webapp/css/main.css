@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #1c1f26;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    height: 100%;
+    left: 0;
+}
+
+.profile-section {
+    text-align: center;
+    padding: 30px 10px 10px;
+}
+
+.profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #0077b6;
+    object-fit: cover;
+}
+
+.branch-name {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #cfd8dc;
+    line-height: 1.4;
+}
+
+/* Sidebar menu */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.menu li {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu li:hover,
+.menu li.active {
+    background: #0077b6;
+    border-radius: 6px;
+}
+
+/* Logout section */
+.logout {
+    padding: 20px;
+    text-align: center;
+}
+
+.logout a {
+    color: #bbb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.logout a:hover {
+    color: #fff;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 250px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #0096c7, #48cae4);
+    padding: 15px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: calc(100% - 250px);
+    top: 0;
+    height: 70px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 26px;
+    margin: 0;
+}
+
+#liveDate {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Iframe */
+iframe {
+    flex: 1;
+    margin-top: 70px;
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
+}

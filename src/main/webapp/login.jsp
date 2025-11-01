@@ -30,7 +30,7 @@
             if (rs.next()) {
                 session.setAttribute("userId", userId);
                 session.setAttribute("branchCode", branchCode);
-                response.sendRedirect("dashbord.jsp");
+                response.sendRedirect("main.jsp");
                 showForm = false;
             } else {
                 errorMessage = "Invalid username or password";
